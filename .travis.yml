@@ -6,7 +6,7 @@ otp_release:
 sudo: false
 install: true
 script:
-  - mix test
+  - mix compile test
 cache:
   directories:
   - $HOME/.mix/archives
