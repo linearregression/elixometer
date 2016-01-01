@@ -10,10 +10,12 @@ before_script:
   - mix local.hex --force
   - mix deps.get --only test
 
-script: "mix test --trace"
+script: 
+  - "MIX_ENV=test mix do test --trace, dialyzer"
+  - "MIX_ENV=prod mix do deps.clean, deps.get, compile, hex.local"
 
 after_success:
-  - mix do compile, coveralls.travis
+  - "MIX_ENV=test mix coveralls.travis"
 
 cache:
   directories:

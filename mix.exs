@@ -19,7 +19,30 @@ defmodule Elixometer.Mixfile do
      source_url: "https://github.com/pinterest/elixometer.git",
      homepage_url: "https://github.com/pinterest/elixometer.git",
      elixirc_options: elixirc_options(Mix.env), 
-     test_coverage: [tool: ExCoveralls]
+     test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test],
+      dialyzer: [
+        plt_add_apps: [:asn1,
+          :crypto,
+          :edoc,
+          :erts,
+          :eunit,
+          :inets,
+          :kernel,
+          :mnesia,
+          :public_key,
+          :ssl,
+          :stdlib,
+          :xmerl
+          ],
+        plt_file: "_plt/otp-#{otp_release}_elixir-#{elixir_release}.plt",
+        plt_add_deps: true,
+        flags: ["-Wno_return",
+          "-Wno_unused",
+          "-Wunmatched_returns",
+          "-Werror_handling"
+        ]
+      ]
     ]
   end
 
