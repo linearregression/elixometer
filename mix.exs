@@ -85,8 +85,7 @@ defmodule Elixometer.Mixfile do
      {:lager, github: "basho/lager", tag: "2.1.0", override: true},
      {:exometer, github: "pspdfkit-labs/exometer"},
      {:netlink, github: "Feuerlabs/netlink", ref: "d6e7188e", override: true},
-     # Doc dependencies
-     {:edown, github: "uwiger/edown", tag: "0.7", override: true, only: :doc},
+     {:edown, github: "uwiger/edown", tag: "0.7", override: true},
      # Test dependencies
      {:excoveralls, "~> 0.3", override: true, only: :test},
      {:meck, github: "eproxus/meck", tag: "0.8.2", override: true, only: :test},
