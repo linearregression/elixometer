@@ -8,4 +8,5 @@ log.*
 *.log
 *.*~
 .*~
+elixometer-*.*.*.tar
 

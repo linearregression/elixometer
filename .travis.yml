@@ -5,8 +5,16 @@ otp_release:
   - 18.1
 sudo: false
 install: true
-script:
-  - mix deps.get && mix test
+
+before_script:
+  - mix local.hex --force
+  - mix deps.get --only test
+
+script: "mix test --trace"
+
+after_success:
+  - mix do compile, coveralls.travis
+
 cache:
   directories:
   - $HOME/.mix/archives
