@@ -87,8 +87,9 @@ defmodule Elixometer.Mixfile do
      {:netlink, github: "Feuerlabs/netlink", ref: "d6e7188e", override: true},
      {:edown, github: "uwiger/edown", tag: "0.7", override: true},
      # Test dependencies
-     {:excoveralls, "~> 0.3", override: true, only: :test},
-     {:meck, github: "eproxus/meck", tag: "0.8.2", override: true, only: :test},
+     {:excoveralls, "~> 0.3", override: true, only: [:dev, :test]},
+     {:meck, github: "eproxus/meck", tag: "0.8.2", override: true, only: [:dev, :test]},
+     {:dialyxir, "~> 0.3", only: [:dev,:test]}
     ]
   end
 
