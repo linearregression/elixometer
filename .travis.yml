@@ -9,10 +9,12 @@ install: true
 before_script:
   - mix local.hex --force
   - mix deps.get --only test
+  - git clone https://github.com/jeremyjh/dialyxir
+  - cd dialyxir && mix do archive.build, archive.install
 
 script: 
-  - "MIX_ENV=test mix do test --trace, dialyzer"
   - "MIX_ENV=prod mix do deps.clean --all, deps.get, compile, hex.build"
+  - "MIX_ENV=test mix do test --trace, dialyzer"
 
 after_success:
   - "MIX_ENV=test mix coveralls.travis"
