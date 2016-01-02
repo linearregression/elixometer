@@ -10,7 +10,7 @@ before_script:
   - mix local.hex --force
   - mix deps.get --only test
   - git clone https://github.com/jeremyjh/dialyxir
-  - cd dialyxir && mix do archive.build, archive.install
+  - cd dialyxir && mix do archive.build, archive.install --force
 
 script: 
   - "MIX_ENV=prod mix do deps.clean --all, deps.get, compile, hex.build"
