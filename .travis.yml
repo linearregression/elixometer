@@ -9,16 +9,19 @@ install: true
 before_script:
   - mix local.hex --force
   - mix deps.get --only test
-  - git clone https://github.com/jeremyjh/dialyxir
-  - cd dialyxir && mix do archive.build, archive.install --force
+  - mkdir -p _plt
+  - pushd ~/deps/dialyxir
+  - mix do archive.build, archive.install --force, dialyzer.plt --output_plt ~/otp-$(TRAVIS_OTP_RELEASE)_elixir-$(TRAVIS_ELIXIR_RELEASE).plt 
+  - popd
 
 script: 
   - "MIX_ENV=prod mix do deps.clean --all, deps.get, compile, hex.build"
-  - "MIX_ENV=test mix do test --trace, dialyzer"
+  - "MIX_ENV=test mix do test --trace, dialyzer "
 
 after_success:
   - "MIX_ENV=test mix coveralls.travis"
 
 cache:
   directories:
-  - $HOME/.mix/archives
+  - 
+$HOME/.mix/archives
