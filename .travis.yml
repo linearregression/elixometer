@@ -10,9 +10,7 @@ before_script:
   - mix local.hex --force
   - mix deps.get --only test
   - mkdir -p _plt
-  - pushd ~/deps/dialyxir
   - mix do archive.build, archive.install --force, dialyzer.plt
-  - popd
 
 script: 
   - "MIX_ENV=prod mix do deps.clean --all, deps.get, compile, hex.build"
