@@ -32,7 +32,7 @@ defmodule Elixometer.Mixfile do
 
   defp deps do
     [
-        {:meck, "~> 0.8.3", only: :test},
+        {:meck, "~> 0.8.3",  override: true, only: :test},
         {:edown, github: "uwiger/edown", tag: "0.7", override: true},
         {:lager, github: "basho/lager", tag: "2.1.0", override: true},
         {:exometer_core, git: "git://github.com/Feuerlabs/exometer_core.git", branch: "master"},
