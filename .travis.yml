@@ -64,6 +64,7 @@ matrix:
 sudo: false
 install: true
 before_script:
+  - mix deps.unlock --all
   - mix local.hex --force
 script:
   - MIX_ENV=test mix do deps.get, test --trace
